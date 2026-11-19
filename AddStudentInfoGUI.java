@@ -100,10 +100,7 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
             {
                 Student s = students[i];
 
-                txtStudents.append(
-                    "Name : " + s.getName() +
-                    " (" + s.getMatric() + ")\n"
-                );
+                txtStudents.append("Name : " + s.getName() + " (" + s.getMatric() + ")\n");
             }
         }
     }
