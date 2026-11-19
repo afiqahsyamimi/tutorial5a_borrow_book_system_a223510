@@ -9,8 +9,8 @@ public class BorrowBookGUI extends JFrame implements ActionListener
     private JLabel lblInfo;
     private JLabel lblBorrowInfo;
 
-    private JComboBox<String> cboStudent;
-    private JComboBox<String> cboBook;
+    private JComboBox cboStudent;
+    private JComboBox cboBook;
 
     private JButton btnBorrow;
 
@@ -29,8 +29,11 @@ public class BorrowBookGUI extends JFrame implements ActionListener
         lblInfo = new JLabel("Borrow Information:");
         lblInfo.setBounds(10, 220, 150, 20);
 
+        lblBorrowInfo = new JLabel("");
+        lblBorrowInfo.setBounds(10, 240, 550, 20);
+
         // Student ComboBox
-        cboStudent = new JComboBox<String>();
+        cboStudent = new JComboBox();
 
         cboStudent.addItem("Ali Imran (A123456)");
         cboStudent.addItem("Siti Aminah (A147895)");
@@ -39,7 +42,7 @@ public class BorrowBookGUI extends JFrame implements ActionListener
         cboStudent.setBounds(170, 20, 300, 25);
 
         // Book ComboBox
-        cboBook = new JComboBox<String>();
+        cboBook = new JComboBox();
 
         cboBook.addItem("Harry Potter (J K Rowling)");
         cboBook.addItem("Lord of The Ring (J R R Tolkien)");
@@ -47,27 +50,22 @@ public class BorrowBookGUI extends JFrame implements ActionListener
 
         cboBook.setBounds(170, 50, 300, 25);
 
-        // Borrow Button
+        // Button
         btnBorrow = new JButton("Borrow");
         btnBorrow.setBounds(140, 85, 80, 25);
-
-        // Borrow Information Output
-        lblBorrowInfo = new JLabel("");
-        lblBorrowInfo.setBounds(10, 240, 550, 20);
 
         // Add Components
         pane.add(lblStudent);
         pane.add(lblBook);
         pane.add(lblInfo);
+        pane.add(lblBorrowInfo);
 
         pane.add(cboStudent);
         pane.add(cboBook);
 
         pane.add(btnBorrow);
 
-        pane.add(lblBorrowInfo);
-
-        // Register event listener
+        // Register event listener with event source
         btnBorrow.addActionListener(this);
     }
 
@@ -82,7 +80,7 @@ public class BorrowBookGUI extends JFrame implements ActionListener
             int student = cboStudent.getSelectedIndex();
             int book = cboBook.getSelectedIndex();
 
-            // Determine selected student
+            // Selected student
             if(student == 0)
             {
                 studentName = "Ali Imran";
@@ -99,7 +97,7 @@ public class BorrowBookGUI extends JFrame implements ActionListener
                 matricNumber = "A112365";
             }
 
-            // Determine selected book
+            // Selected book
             if(book == 0)
             {
                 bookTitle = "Harry Potter";
@@ -113,7 +111,7 @@ public class BorrowBookGUI extends JFrame implements ActionListener
                 bookTitle = "The Secret of Lost Stone";
             }
 
-            // Display Borrow Information
+            // Display borrow information
             lblBorrowInfo.setText(
                 studentName + " with matric number " +
                 matricNumber + " has borrow a book with title " +
@@ -130,7 +128,8 @@ public class BorrowBookGUI extends JFrame implements ActionListener
         frame.setSize(600, 330);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         frame.setVisible(true);
     }
 }
+
+//References: Copilot
