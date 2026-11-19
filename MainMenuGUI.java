@@ -1,3 +1,9 @@
+/*
+TUTORIAL 5A
+STUDENT NAME: AFIQAH SYAMIMI BINTI MOHD SOUFI
+MATRIC NUMBER: A223510
+*/
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
