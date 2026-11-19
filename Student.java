@@ -1,3 +1,27 @@
-public class Student {
-    
+public class Student
+{
+    private String name;
+    private String matric;
+
+    public Student(String name, String matric)
+    {
+        this.name = name;
+        this.matric = matric;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getMatric()
+    {
+        return matric;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Name : " + name + " (" + matric + ")";
+    }
 }
