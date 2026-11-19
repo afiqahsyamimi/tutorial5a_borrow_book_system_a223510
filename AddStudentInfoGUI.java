@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class AddStudentInfoGUI extends JFrame implements ActionListener
@@ -17,11 +16,13 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
 
     private JTextArea txtStudents;
 
-    private ArrayList<Student> students;
+    private Student[] students;
+    private int studentCount;
 
     public AddStudentInfoGUI()
     {
-        students = new ArrayList<Student>();
+        students = new Student[10];
+        studentCount = 0;
 
         Container pane = getContentPane();
         pane.setLayout(null);
@@ -55,10 +56,9 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
         txtStudents.setEditable(false);
 
         JScrollPane scrollPane = new JScrollPane(txtStudents);
-
         scrollPane.setBounds(30, 145, 430, 90);
 
-        // Add components
+        // Add Components
         pane.add(lblName);
         pane.add(lblMatric);
         pane.add(lblStudents);
@@ -76,7 +76,6 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
         btnList.addActionListener(this);
     }
 
-    @Override
     public void actionPerformed(ActionEvent e)
     {
         if(e.getSource() == btnAdd)
@@ -86,7 +85,8 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
 
             Student s = new Student(name, matric);
 
-            students.add(s);
+            students[studentCount] = s;
+            studentCount++;
 
             txtName.setText("");
             txtMatric.setText("");
@@ -96,9 +96,14 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
         {
             txtStudents.setText("");
 
-            for(Student s : students)
+            for(int i = 0; i < studentCount; i++)
             {
-                txtStudents.append(s.toString() + "\n");
+                Student s = students[i];
+
+                txtStudents.append(
+                    "Name : " + s.getName() +
+                    " (" + s.getMatric() + ")\n"
+                );
             }
         }
     }
@@ -109,9 +114,9 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
 
         frame.setTitle("Add Student Info");
         frame.setSize(520, 320);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.setVisible(true);
     }
 }
-
-//Reference: Copilot

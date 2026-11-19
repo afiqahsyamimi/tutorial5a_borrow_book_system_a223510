@@ -22,6 +22,6 @@ public class Student
     @Override
     public String toString()
     {
-        return "Name : " + name + " (" + matric + ")";
+        return name + " (" + matric + ")";
     }
 }

@@ -32,25 +32,51 @@ public class BorrowBookGUI extends JFrame implements ActionListener
         lblBorrowInfo = new JLabel("");
         lblBorrowInfo.setBounds(10, 240, 550, 20);
 
+        // Student objects
+        Student student1 = new Student(
+            "Ali Imran", "A123456"
+        );
+
+        Student student2 = new Student(
+            "Siti Aminah", "A147895"
+        );
+
+        Student student3 = new Student(
+            "Abu Bakar", "A112365"
+        );
+
         // Student ComboBox
         cboStudent = new JComboBox();
 
-        cboStudent.addItem("Ali Imran (A123456)");
-        cboStudent.addItem("Siti Aminah (A147895)");
-        cboStudent.addItem("Abu Bakar (A112365)");
+        cboStudent.addItem(student1);
+        cboStudent.addItem(student2);
+        cboStudent.addItem(student3);
 
         cboStudent.setBounds(170, 20, 300, 25);
+
+        // Book objects
+        Book book1 = new Book(
+            "Harry Potter", "J K Rowling"
+        );
+
+        Book book2 = new Book(
+            "Lord of The Ring", "J R R Tolkien"
+        );
+
+        Book book3 = new Book(
+            "The Secret of Lost Stone", "Melissa Payne"
+        );
 
         // Book ComboBox
         cboBook = new JComboBox();
 
-        cboBook.addItem("Harry Potter (J K Rowling)");
-        cboBook.addItem("Lord of The Ring (J R R Tolkien)");
-        cboBook.addItem("The Secret of Lost Stone (Melissa Payne)");
+        cboBook.addItem(book1);
+        cboBook.addItem(book2);
+        cboBook.addItem(book3);
 
-        cboBook.setBounds(170, 50, 300, 25);
+        cboBook.setBounds(170, 50, 330, 25);
 
-        // Button
+        // Borrow Button
         btnBorrow = new JButton("Borrow");
         btnBorrow.setBounds(140, 85, 80, 25);
 
@@ -65,7 +91,7 @@ public class BorrowBookGUI extends JFrame implements ActionListener
 
         pane.add(btnBorrow);
 
-        // Register event listener with event source
+        // Register event listener
         btnBorrow.addActionListener(this);
     }
 
@@ -73,49 +99,22 @@ public class BorrowBookGUI extends JFrame implements ActionListener
     {
         if(e.getSource() == btnBorrow)
         {
-            String studentName = "";
-            String matricNumber = "";
-            String bookTitle = "";
+            Student student =
+                (Student)cboStudent.getSelectedItem();
 
-            int student = cboStudent.getSelectedIndex();
-            int book = cboBook.getSelectedIndex();
+            Book book =
+                (Book)cboBook.getSelectedItem();
 
-            // Selected student
-            if(student == 0)
-            {
-                studentName = "Ali Imran";
-                matricNumber = "A123456";
-            }
-            else if(student == 1)
-            {
-                studentName = "Siti Aminah";
-                matricNumber = "A147895";
-            }
-            else if(student == 2)
-            {
-                studentName = "Abu Bakar";
-                matricNumber = "A112365";
-            }
-
-            // Selected book
-            if(book == 0)
-            {
-                bookTitle = "Harry Potter";
-            }
-            else if(book == 1)
-            {
-                bookTitle = "Lord of The Ring";
-            }
-            else if(book == 2)
-            {
-                bookTitle = "The Secret of Lost Stone";
-            }
+            // Borrow selected book
+            book.borrowBy(student);
 
             // Display borrow information
             lblBorrowInfo.setText(
-                studentName + " with matric number " +
-                matricNumber + " has borrow a book with title " +
-                bookTitle + "."
+                student.getName() +
+                " with matric number " +
+                student.getMatric() +
+                " has borrow a book with title " +
+                book.getTitle() + "."
             );
         }
     }
@@ -127,9 +126,10 @@ public class BorrowBookGUI extends JFrame implements ActionListener
         frame.setTitle("Borrow Book");
         frame.setSize(600, 330);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(
+            JFrame.EXIT_ON_CLOSE
+        );
+
         frame.setVisible(true);
     }
 }
-
-//References: Copilot

@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class AddBookInfoGUI extends JFrame implements ActionListener
@@ -17,11 +16,13 @@ public class AddBookInfoGUI extends JFrame implements ActionListener
 
     private JTextArea txtBooks;
 
-    private ArrayList<Book> books;
+    private Book[] books;
+    private int bookCount;
 
     public AddBookInfoGUI()
     {
-        books = new ArrayList<Book>();
+        books = new Book[10];
+        bookCount = 0;
 
         Container pane = getContentPane();
         pane.setLayout(null);
@@ -86,7 +87,8 @@ public class AddBookInfoGUI extends JFrame implements ActionListener
 
             Book b = new Book(title, author);
 
-            books.add(b);
+            books[bookCount] = b;
+            bookCount++;
 
             txtTitle.setText("");
             txtAuthor.setText("");
@@ -98,7 +100,7 @@ public class AddBookInfoGUI extends JFrame implements ActionListener
 
             for(Book b : books)
             {
-                txtBooks.append(b.toString() + "\n");
+                txtBooks.append("Book title : " + b.getTitle() + " (Author : " + b.getAuthor() + ")\n");
             }
         }
     }
