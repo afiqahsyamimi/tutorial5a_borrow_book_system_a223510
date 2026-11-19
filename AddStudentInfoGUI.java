@@ -1,7 +1,7 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.*;
 
 public class AddStudentInfoGUI extends JFrame implements ActionListener
 {
@@ -54,8 +54,7 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
         txtStudents = new JTextArea();
         txtStudents.setEditable(false);
 
-        JScrollPane scrollPane =
-                new JScrollPane(txtStudents);
+        JScrollPane scrollPane = new JScrollPane(txtStudents);
 
         scrollPane.setBounds(30, 145, 430, 90);
 
@@ -85,8 +84,7 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
             String name = txtName.getText();
             String matric = txtMatric.getText();
 
-            Student s =
-                    new Student(name, matric);
+            Student s = new Student(name, matric);
 
             students.add(s);
 
@@ -100,21 +98,20 @@ public class AddStudentInfoGUI extends JFrame implements ActionListener
 
             for(Student s : students)
             {
-                txtStudents.append(
-                        s.toString() + "\n");
+                txtStudents.append(s.toString() + "\n");
             }
         }
     }
 
     public static void main(String[] args)
     {
-        AddStudentInfoGUI frame =
-                new AddStudentInfoGUI();
+        AddStudentInfoGUI frame = new AddStudentInfoGUI();
 
         frame.setTitle("Add Student Info");
         frame.setSize(520, 320);
-        frame.setDefaultCloseOperation(
-                JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 }
+
+//Reference: Copilot
