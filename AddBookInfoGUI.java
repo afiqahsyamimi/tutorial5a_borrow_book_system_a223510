@@ -8,7 +8,7 @@ public class AddBookInfoGUI extends JFrame implements ActionListener
     private JLabel lblTitle;
     private JLabel lblAuthor;
     private JLabel lblBooks;
-
+    
     private JTextField txtTitle;
     private JTextField txtAuthor;
 
