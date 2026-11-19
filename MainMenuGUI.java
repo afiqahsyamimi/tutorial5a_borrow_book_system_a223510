@@ -56,20 +56,17 @@ public class MainMenuGUI extends JFrame implements ActionListener
     {
         if(e.getSource()==btnStudent)
         {
-            JOptionPane.showMessageDialog(this,
-                    "Add Student Info");
+            JOptionPane.showMessageDialog(this,"Add Student Info");
         }
 
         else if(e.getSource()==btnBook)
         {
-            JOptionPane.showMessageDialog(this,
-                    "Add Book Info");
+            JOptionPane.showMessageDialog(this,"Add Book Info");
         }
 
         else if(e.getSource()==btnBorrow)
         {
-            JOptionPane.showMessageDialog(this,
-                    "Borrow Book");
+            JOptionPane.showMessageDialog(this,"Borrow Book");
         }
     }
 
